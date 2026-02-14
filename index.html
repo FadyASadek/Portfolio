@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fady Ashraf | Full-Stack Developer</title>
+
+    <!-- Favicon: حرف FA بتدرج لوني داخل مربع داكن (SVG Data URI) -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300c6ff' /%3E%3Cstop offset='100%25' stop-color='%230072ff' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='25' fill='%231e293b' /%3E%3Ctext x='50' y='62' font-family='Arial, sans-serif' font-weight='bold' font-size='50' fill='url(%23grad)' text-anchor='middle'%3EFA%3C/text%3E%3C/svg%3E"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="background-blobs">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+
+    <nav class="navbar glass">
+      <div class="container nav-container">
+        <a href="#" class="logo">Fady<span class="dot">.</span></a>
+
+        <div class="nav-right">
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#volunteering">Volunteering</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li>
+              <a
+                href="assets/Fady_Ashraf_CV.pdf"
+                download
+                target="_blank"
+                class="btn-download"
+                onclick="
+                  this.innerHTML =
+                    'Downloading... <i class=\'fas fa-spinner fa-spin\'></i>'
+                "
+              >
+                Resume <i class="fas fa-download"></i>
+              </a>
+            </li>
+          </ul>
+
+          <div class="nav-controls">
+            <button
+              id="theme-toggle"
+              class="icon-btn theme-btn"
+              aria-label="Toggle Theme"
+            >
+              <i class="fas fa-sun"></i>
+              <i class="fas fa-moon"></i>
+            </button>
+
+            <div class="hamburger">
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section id="about" class="hero">
+      <div class="container hero-container">
+        <div class="hero-text scroll-reveal">
+          <span class="badge">Full-Stack Developer</span>
+          <h1>
+            Hi, I'm <br />
+            <span class="gradient-text">Fady Ashraf</span>
+          </h1>
+          <h2 class="job-title">.NET & Angular Developer</h2>
+          <p class="hero-desc">
+            I am a Full-Stack Software Engineer dedicated to engineering robust,
+            scalable web solutions. With a strong foundation in the .NET
+            Ecosystem and Clean Architecture, I bridge the gap between complex
+            backend logic and intuitive user experiences. My journey spans from
+            delivering production-ready Freelance projects. I don’t just write
+            code; I build maintainable systems that solve real-world business
+            problems.
+          </p>
+          <div class="cta-group">
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="#contact" class="btn btn-secondary">Contact Me</a>
+          </div>
+        </div>
+
+        <div class="hero-image-wrapper scroll-reveal delay-1">
+          <div class="image-box glass profile-anim">
+            <img
+              src="image/0c3b2f75-5309-4d26-9213-94f2db25b35b.jpg"
+              alt="Fady Ashraf"
+              class="profile-pic"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- 1. Work Experience Section -->
+    <section id="experience" class="section">
+      <div class="container">
+        <h2 class="section-title scroll-reveal">
+          Work <span class="gradient-text">Experience</span>
+        </h2>
+        <div class="timeline">
+          <!-- Freelance -->
+          <div class="timeline-card glass scroll-reveal">
+            <div class="date">Jan 2024 - Present</div>
+            <div class="content">
+              <h3>Independent Freelancer</h3>
+              <h4>Full-Stack Software Engineer</h4>
+              <p>
+                Architecting and delivering production-ready web solutions.
+                Managed the full software development lifecycle for various
+                clients, from database design to deployment.
+              </p>
+              <div class="tech-stack-tags">
+                <span class="tag">Client Management</span>
+                <span class="tag">System Architecture</span>
+                <span class="tag">Azure</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CIB Internship -->
+          <div class="timeline-card glass scroll-reveal delay-1">
+            <div class="date">Jul 2025 - Aug 2025</div>
+            <div class="content">
+              <h3>Commercial International Bank (CIB)</h3>
+              <h4>Summer Intern (FinTech & AI)</h4>
+              <p>
+                Gained deep insights into financial technologies and explored
+                the integration of Generative AI within banking workflows to
+                improve operational efficiency.
+              </p>
+              <div class="tech-stack-tags">
+                <span class="tag">FinTech</span>
+                <span class="tag">Gen AI</span>
+                <span class="tag">Strategic Analysis</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section-title scroll-reveal">
+          Featured <span class="gradient-text">Projects</span>
+        </h2>
+        <div class="bento-grid">
+          <!-- 1. Sales & Installment Management System -->
+          <div
+            class="bento-item glass scroll-reveal"
+            onclick="openModal('sales_system')"
+          >
+            <div class="project-img-container">
+              <img src="image/s1.png" alt="Sales System" />
+              <div class="overlay">
+                <i class="fas fa-expand-alt"></i> View Details
+              </div>
+            </div>
+            <div class="project-content">
+              <h3>Sales & Installment System</h3>
+              <p>
+                Complex MVC app for managing financial installments and
+                analytics.
+              </p>
+              <div class="tech-stack">
+                <span>.NET Core</span><span>MVC</span><span>Chart.js</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. ICPC NATU Community Platform -->
+          <div
+            class="bento-item glass scroll-reveal delay-1"
+            onclick="openModal('icpc_natu')"
+          >
+            <div class="project-img-container">
+              <img
+                src="image/Screenshot 2026-02-14 172847.png"
+                alt="ICPC NATU Platform"
+              />
+              <div class="overlay">
+                <i class="fas fa-expand-alt"></i> View Details
+              </div>
+            </div>
+            <div class="project-content">
+              <h3>ICPC NATU Community</h3>
+              <p>
+                Automated training & scoring system with Codeforces API
+                integration.
+              </p>
+              <div class="tech-stack">
+                <span>ASP.NET Core</span><span>Background Service</span
+                ><span>Clean Arch</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Clinic Booking System -->
+          <div
+            class="bento-item glass scroll-reveal delay-2"
+            onclick="openModal('clinic_api')"
+          >
+            <div class="project-img-container">
+              <img
+                src="image/api-icon-flat-style-software-integration-vector-illustration-isolated-background-algorithm-programming-sign-business-concept_157943-13795.avif"
+                alt="Clinic API"
+              />
+              <div class="overlay">
+                <i class="fas fa-expand-alt"></i> View Details
+              </div>
+            </div>
+            <div class="project-content">
+              <h3>Clinic Booking API</h3>
+              <p>RESTful API with dynamic scheduling and Clean Architecture.</p>
+              <div class="tech-stack">
+                <span>.NET 8</span><span>WebAPI</span><span>JWT</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. E-commerce Marketplace -->
+          <div
+            class="bento-item glass scroll-reveal delay-3"
+            onclick="openModal('ecommerce_market')"
+          >
+            <div class="project-img-container">
+              <img src="image/OIP.webp" alt="E-commerce Marketplace" />
+              <div class="overlay">
+                <i class="fas fa-expand-alt"></i> View Details
+              </div>
+            </div>
+            <div class="project-content">
+              <h3>E-commerce Marketplace</h3>
+              <p>
+                Multi-vendor platform with specialized dashboards and AJAX cart.
+              </p>
+              <div class="tech-stack">
+                <span>ASP.NET Core</span><span>MVC</span><span>EF Core</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Student Management System -->
+          <div
+            class="bento-item glass scroll-reveal delay-4"
+            onclick="openModal('student_mgmt')"
+          >
+            <div class="project-img-container">
+              <img
+                src="image/230325905-16c648bb-b364-4f1e-a755-426615f5ec54.png"
+                alt="Student Management"
+              />
+              <div class="overlay">
+                <i class="fas fa-expand-alt"></i> View Details
+              </div>
+            </div>
+            <div class="project-content">
+              <h3>Student Management</h3>
+              <p>Fullstack CRUD application with modern Angular frontend.</p>
+              <div class="tech-stack">
+                <span>Angular</span><span>Tailwind</span><span>.NET API</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. JWT-Authentication Project -->
+          <div
+            class="bento-item glass scroll-reveal delay-5"
+            onclick="openModal('jwt_auth')"
+          >
+            <div class="project-img-container">
+              <img
+                src="image/Screenshot 2026-02-14 190946.png"
+                alt="JWT Auth"
+              />
+              <div class="overlay">
+                <i class="fas fa-expand-alt"></i> View Details
+              </div>
+            </div>
+            <div class="project-content">
+              <h3>JWT Authentication</h3>
+              <p>
+                Secure full-stack auth system with JWT protection for API
+                endpoints.
+              </p>
+              <div class="tech-stack">
+                <span>Angular</span><span>JWT</span><span>Security</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. QR Code Maker -->
+          <div
+            class="bento-item glass scroll-reveal delay-6"
+            onclick="openModal('qr_maker')"
+          >
+            <div class="project-img-container">
+              <img
+                src="image/Screenshot 2026-02-14 191914.png"
+                alt="QR Code Generator"
+              />
+              <div class="overlay">
+                <i class="fas fa-expand-alt"></i> View Details
+              </div>
+            </div>
+            <div class="project-content">
+              <h3>QR Code Maker</h3>
+              <p>Responsive generator with real-time DOM manipulation.</p>
+              <div class="tech-stack">
+                <span>JavaScript</span><span>DOM API</span
+                ><span>External API</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 8. Memory Blocks Game -->
+          <div
+            class="bento-item glass scroll-reveal delay-7"
+            onclick="openModal('memory_game')"
+          >
+            <div class="project-img-container">
+              <img src="image/game.png" alt="Memory Game" />
+              <div class="overlay">
+                <i class="fas fa-expand-alt"></i> View Details
+              </div>
+            </div>
+            <div class="project-content">
+              <h3>Memory Blocks Game</h3>
+              <p>
+                Interactive card-matching game built with pure vanilla
+                JavaScript.
+              </p>
+              <div class="tech-stack">
+                <span>JavaScript</span><span>CSS3</span><span>Game Logic</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 9. Qasr Al-Salam Restaurant Menu -->
+          <div
+            class="bento-item glass scroll-reveal delay-8"
+            onclick="openModal('qasr_alsalam')"
+          >
+            <div class="project-img-container">
+              <img src="image/قصر السلام.png" alt="Qasr Al-Salam Menu" />
+              <div class="overlay">
+                <i class="fas fa-expand-alt"></i> View Details
+              </div>
+            </div>
+            <div class="project-content">
+              <h3>Qasr Al-Salam Menu</h3>
+              <p>
+                Responsive restaurant menu with interactive categories and
+                modern UI.
+              </p>
+              <div class="tech-stack">
+                <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="container">
+        <h2 class="section-title scroll-reveal">
+          Technical <span class="gradient-text">Skills</span>
+        </h2>
+
+        <div class="skills-wrapper">
+          <div class="skills-category scroll-reveal">
+            <h3><i class="fas fa-server"></i> Languages & Backend</h3>
+            <div class="skills-grid">
+              <div class="skill-card glass">
+                <i class="fab fa-microsoft skill-icon"></i>
+                <span>.NET Core</span>
+              </div>
+              <div class="skill-card glass">
+                <i class="fas fa-code skill-icon"></i>
+                <span>C#</span>
+              </div>
+              <div class="skill-card glass">
+                <i class="fab fa-java skill-icon"></i>
+                <span>Java</span>
+              </div>
+              <div class="skill-card glass">
+                <i class="fas fa-file-code skill-icon"></i>
+                <span>C++</span>
+              </div>
+              <div class="skill-card glass">
+                <i class="fas fa-terminal skill-icon"></i>
+                <span>C</span>
+              </div>
+              <div class="skill-card glass">
+                <i class="fas fa-database skill-icon"></i>
+                <span>SQL Server</span>
+              </div>
+              <div class="skill-card glass">
+                <i class="fas fa-filter skill-icon"></i>
+                <span>LINQ</span>
+              </div>
+              <div class="skill-card glass">
+                <i class="fas fa-project-diagram skill-icon"></i>
+                <span>Entity Framework</span>
+              </div>
+              <div class="skill-card glass">
+                <i class="fas fa-layer-group skill-icon"></i>
+                <span>3-Tier Architecture</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills-category scroll-reveal delay-1">
+            <h3><i class="fas fa-laptop-code"></i> Frontend & Web</h3>
+            <div class="skills-grid">
+              <div class="skill-card glass">
+                <i class="fab fa-angular skill-icon"></i>
+                <span>Angular</span>
+              </div>
+              <div class="skill-card glass">
+                <i class="fab fa-js skill-icon"></i> <span>TypeScript</span>
+              </div>
+              <div class="skill-card glass">
+                <i class="fab fa-js-square skill-icon"></i>
+                <span>JavaScript</span>
+              </div>
+              <div class="skill-card glass">
+                <i class="fab fa-html5 skill-icon"></i>
+                <span>HTML5</span>
+              </div>
+              <div class="skill-card glass">
+                <i class="fab fa-css3-alt skill-icon"></i>
+                <span>CSS3</span>
+              </div>
+              <div class="skill-card glass">
+                <i class="fas fa-wind skill-icon"></i>
+                <span>Tailwind</span>
+              </div>
+              <div class="skill-card glass">
+                <i class="fab fa-bootstrap skill-icon"></i>
+                <span>Bootstrap</span>
+              </div>
+              <div class="skill-card glass">
+                <i class="fab fa-git-alt skill-icon"></i>
+                <span>Git & GitHub</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Leadership & Volunteering Section -->
+    <section id="volunteering" class="section">
+      <div class="container">
+        <h2 class="section-title scroll-reveal">
+          Leadership & <span class="gradient-text">Volunteering</span>
+        </h2>
+        <div class="timeline">
+          <!-- ICPC Lead -->
+          <div class="timeline-card glass scroll-reveal">
+            <div class="date">Jul 2025 - Present</div>
+            <div class="content">
+              <h3>ICPC NATU Community</h3>
+              <h4>Tech Team Lead</h4>
+              <p>
+                Directing the technical roadmap for the community. Mentoring
+                junior developers and managing the development of our automated
+                training and scoring platforms.
+              </p>
+              <div class="tech-stack-tags">
+                <span class="tag">Team Leadership</span>
+                <span class="tag">Mentoring</span>
+                <span class="tag">Open Source</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- GDG Assiut -->
+          <div class="timeline-card glass scroll-reveal delay-1">
+            <div class="date">Jul 2024 - Present</div>
+            <div class="content">
+              <h3>GDG Assiut</h3>
+              <h4>HR Team Organizer</h4>
+              <p>
+                Played a key role in organizing DevFest '24 and DevFest '25.
+                Managed team recruitment, coordination, and on-site logistics
+                for a large-scale tech conference.
+              </p>
+              <div class="tech-stack-tags">
+                <span class="tag">Community Organizing</span>
+                <span class="tag">Human Resources</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Education Section -->
+    <section id="education" class="section">
+      <div class="container">
+        <h2 class="section-title scroll-reveal">
+          My <span class="gradient-text">Education</span>
+        </h2>
+        <div class="timeline">
+          <div class="timeline-card glass scroll-reveal">
+            <div class="date">2022 - 2026</div>
+            <div class="content">
+              <h3>B.Sc. in Information Technology</h3>
+              <h4>New Assuit Technological University</h4>
+              <p>
+                Focusing on Software Engineering, Enterprise Systems, and
+                Advanced Algorithms. Actively participating in technical
+                research and competitive programming.
+              </p>
+              <div class="tech-stack-tags">
+                <span class="tag">Computer Science</span>
+                <span class="tag">Software Engineering</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section footer-section scroll-reveal">
+      <div class="container text-center">
+        <h2 class="big-text">
+          Let's Build Something <br />
+          <span class="gradient-text">Amazing.</span>
+        </h2>
+
+        <!-- زر الإيميل الأساسي -->
+        <a href="mailto:alsyadf29@gmail.com" class="btn btn-primary big-btn">
+          Say Hello <i class="fas fa-paper-plane"></i>
+        </a>
+        <a
+          href="assets/Fady_Ashraf_CV.pdf"
+          download
+          target="_blank"
+          onclick="
+            this.innerHTML =
+              'Downloading... <i class=\'fas fa-spinner fa-spin\'></i>'
+          "
+          class="btn btn-secondary big-btn"
+        >
+          Download Resume <i class="fas fa-file-download"></i>
+        </a>
+
+        <!-- أزرار السوشيال ميديا -->
+        <div class="socials">
+          <!-- LinkedIn -->
+          <a
+            href="https://www.linkedin.com/in/fadyasadek/"
+            target="_blank"
+            class="icon-btn glass"
+          >
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+
+          <!-- GitHub -->
+          <a
+            href="https://github.com/FadyASadek"
+            target="_blank"
+            class="icon-btn glass"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+
+          <!-- WhatsApp (تمت إضافته بدلاً من Instagram) -->
+          <!-- الرابط يفتح المحادثة مباشرة -->
+          <a
+            href="https://wa.me/+201104687519"
+            target="_blank"
+            class="icon-btn glass"
+          >
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+
+        <p class="copyright">© 2026 Fady Ashraf. Crafted with Code.</p>
+      </div>
+    </section>
+    <div id="project-modal" class="modal-overlay">
+      <div class="modal-content glass">
+        <button class="close-modal" onclick="closeModal()">&times;</button>
+        <div class="modal-body">
+          <div class="modal-gallery">
+            <img id="modal-img" src="" alt="Project Preview" />
+          </div>
+          <div class="modal-info">
+            <h2 id="modal-title" class="gradient-text"></h2>
+            <p id="modal-desc"></p>
+            <div class="modal-tech">
+              <h4>Technologies:</h4>
+              <div id="modal-stack" class="tech-stack"></div>
+            </div>
+            <div class="modal-actions">
+              <a
+                id="modal-live"
+                href="#"
+                target="_blank"
+                class="btn btn-primary"
+                >Live Demo <i class="fas fa-external-link-alt"></i
+              ></a>
+              <a
+                id="modal-code"
+                href="#"
+                target="_blank"
+                class="btn btn-secondary"
+                >GitHub Code <i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
