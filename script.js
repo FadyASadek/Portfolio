@@ -86,7 +86,7 @@ const projectsData = {
     title: "Qasr Al-Salam Restaurant Digital Menu",
     desc: "A premium digital menu developed for 'Qasr Al-Salam' restaurant, focusing on visual appeal and seamless mobile interaction. The project uses HTML, CSS, and JS to create a multi-category menu with smooth transitions, responsive layouts for all device sizes, and an intuitive interface that mimics a physical menu's ease of navigation.",
     tech: ["HTML5", "CSS3", "JavaScript", "Responsive Design", "UI/UX"],
-    img: ".image/قصر السلام.png",
+    img: "image/قصر السلام.png",
     live: "https://qasr-el-salam.runasp.net/",
     code: "#",
   },
