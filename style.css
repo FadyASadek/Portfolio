@@ -31,10 +31,10 @@
   font-family: "Outfit", sans-serif;
 }
 
-/* 🔴 1. Smooth Scroll Activation */
+/*  Smooth Scroll Activation */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 100px; /* Offset for fixed navbar */
+  scroll-padding-top: 100px; 
 }
 
 body {
@@ -191,7 +191,6 @@ p {
   transition: 0.3s;
 }
 
-/* 🔴 2. Mobile Menu Overlay (Improved) */
 @media (max-width: 900px) {
   .nav-links {
     position: fixed;
@@ -214,7 +213,7 @@ p {
   }
   .nav-links a:not(.btn-download) {
     font-size: 1.5rem;
-  } /* Bigger text on mobile */
+  } 
   .hamburger {
     display: flex;
   }
@@ -292,13 +291,11 @@ p {
   padding: 10px;
   position: relative;
   overflow: hidden;
-  
-  /* 🔴 الحل السحري لمنع البكسلة أثناء الحركة */
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
-  will-change: transform; /* بيعرف المتصفح إن فيه حركة جاية فبيجهز نفسه */
+  will-change: transform; 
 }
 
 .profile-pic {
@@ -306,7 +303,6 @@ p {
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-  /* إلغاء أي إعدادات سابقة للـ rendering وخليها Default */
   image-rendering: auto; 
 }
 
@@ -353,7 +349,7 @@ p {
   border: 1px solid var(--glass-border);
 }
 
-/* 🔴 3. Skills Section (New Design) */
+/*  3. Skills Section */
 .skills-wrapper {
   display: flex;
   flex-direction: column;
@@ -431,7 +427,7 @@ p {
 .project-img-container img {
   max-width: 100%;
     height: auto;
-    display: block; /* يمنع المسافات الغريبة أسفل الصورة */
+    display: block; 
     object-fit: cover;
 }
 .overlay {
