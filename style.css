@@ -469,86 +469,310 @@ p {
   border-radius: 20px;
 }
 
-/* --- Modal --- */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(5px);
-  z-index: 2000;
+.bento-item:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+.bento-item.is-collapsed {
   display: none;
+}
+.projects-more {
+  display: flex;
   justify-content: center;
+  margin-top: 3rem;
+}
+.btn-view-all {
+  display: inline-flex;
   align-items: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-.modal-overlay.active {
-  display: flex;
-  opacity: 1;
-}
-.modal-content {
-  width: 90%;
-  max-width: 900px;
-  max-height: 90vh;
-  background: var(--bg-color);
-  border-radius: 20px;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-.close-modal {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.5);
-  border: none;
-  color: white;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 32px;
+  border-radius: 30px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: inherit;
   cursor: pointer;
-  z-index: 10;
-  display: flex;
-  justify-content: center;
+  transition: 0.3s;
+}
+.btn-view-all:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.btn-view-all:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+.btn-view-all i {
+  transition: transform 0.3s ease;
+}
+.btn-view-all[aria-expanded="true"] i {
+  transform: rotate(180deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-view-all,
+  .btn-view-all i {
+    transition: none;
+  }
+}
+
+/* Prevents display rules from overriding the HTML hidden attribute */
+.case-study [hidden],
+.lightbox[hidden],
+.btn-view-all[hidden] {
+  display: none !important;
+}
+
+/* Clears the fixed floating navbar (top: 20px, ~70px tall) */
+.case-study {
+  padding-top: 8rem;
+  padding-bottom: 4rem;
+}
+.cs-back {
+  display: inline-flex;
   align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+.cs-back:hover {
+  color: var(--primary);
+}
+.cs-hero {
+  margin-bottom: 3rem;
+}
+#cs-title {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.15;
+}
+.cs-tagline {
   font-size: 1.2rem;
+  color: var(--text-muted);
+  max-width: 60ch;
 }
-.modal-body {
-  overflow-y: auto;
+.cs-meta {
   display: flex;
-  flex-direction: column;
-  height: 100%;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
 }
-.modal-gallery {
-  background: #000;
-  min-height: 300px;
-  display: flex;
+.cs-meta li {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.5rem;
+  padding: 6px 14px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  border-radius: 30px;
+  font-size: 0.9rem;
 }
-.modal-gallery img {
+.cs-meta li i {
+  color: var(--primary);
+}
+.cs-meta-label {
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+.cs-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.cs-section {
+  margin-top: 4rem;
+}
+.cs-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+.cs-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 1.25rem;
+}
+.cs-gallery-item {
+  padding: 0;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: zoom-in;
+  display: block;
   width: 100%;
-  max-height: 400px;
-  object-fit: contain;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
-.modal-info {
+.cs-gallery-item:hover {
+  border-color: var(--primary);
+  transform: translateY(-4px);
+}
+.cs-gallery-item:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+.cs-gallery-item img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.cs-gallery-item:hover img {
+  transform: scale(1.03);
+}
+.cs-gallery-item:first-child {
+  grid-column: 1 / -1;
+}
+.cs-gallery-item:first-child img {
+  object-fit: contain;
+  max-height: 560px;
+}
+.cs-two-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 1.5rem;
+}
+.cs-card {
   padding: 2rem;
 }
-.modal-actions {
+.cs-card h3 {
+  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.cs-card h3 i {
+  color: var(--primary);
+}
+.cs-card p {
+  margin-bottom: 0;
+}
+.cs-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.85rem;
+  color: var(--text-muted);
+}
+.cs-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  transform: translateY(-50%);
+}
+.cs-challenges li strong {
+  display: block;
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+}
+.cs-stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: 1.25rem;
+}
+.cs-stack-group {
+  padding: 1.5rem;
+}
+.cs-stack-group h3 {
+  font-size: 1.05rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.cs-stack-group h3 i {
+  color: var(--primary);
+}
+.cs-stack-group .tech-stack {
+  margin-top: 0;
+}
+.cs-footer-nav {
   display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
+  justify-content: center;
+  margin-top: 4rem;
 }
-@media (min-width: 768px) {
-  .modal-body {
-    flex-direction: row;
+.cs-not-found {
+  text-align: center;
+  padding: 3rem;
+  max-width: 600px;
+  margin: 2rem auto 0;
+}
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--nav-bg);
+  backdrop-filter: blur(8px);
+  cursor: zoom-out;
+}
+.lightbox-img {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  cursor: default;
+}
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  color: var(--text-main);
+  font-size: 1.75rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.lightbox-close:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+.lightbox-close:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  color: var(--primary);
+  border-color: var(--primary);
+}
+@media (max-width: 600px) {
+  .case-study {
+    padding-top: 7rem;
   }
-  .modal-gallery,
-  .modal-info {
-    width: 50%;
+  .cs-card,
+  .cs-stack-group {
+    padding: 1.5rem;
+  }
+  .cs-heading {
+    font-size: 1.6rem;
+  }
+  .cs-actions a {
+    flex: 1 1 100%;
+    justify-content: center;
   }
 }
+
 
 /* --- General UI --- */
 .glass {
@@ -672,6 +896,15 @@ p {
 }
 .delay-2 {
   transition-delay: 0.2s;
+}
+.delay-3 {
+  transition-delay: 0.3s;
+}
+.delay-4 {
+  transition-delay: 0.4s;
+}
+.delay-5 {
+  transition-delay: 0.5s;
 }
 [data-theme="dark"] .fa-sun {
   display: block;
