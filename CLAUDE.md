@@ -10,7 +10,7 @@ Personal portfolio site for Fady Ashraf (`https://github.com/FadyASadek/Portfoli
 
 There is no build step, package manager, linter, or test suite. Open `index.html` directly in a browser, or serve the folder (`python -m http.server`) if a file:// origin causes trouble. Deployment is a push to `origin/main`.
 
-External dependencies load from CDNs at runtime only: Font Awesome 6.4.0 and the Outfit font from Google Fonts.
+External dependencies load from CDNs at runtime only: Font Awesome 6.4.0, the Outfit font from Google Fonts, and Three.js r128 (cdnjs UMD build, loaded by index.html only).
 
 ## Architecture
 
@@ -46,6 +46,8 @@ The card thumbnail and the case-study `img` are independent fields — they are 
 
   `project.js` runs before `script.js` on `project.html`. It has to: the observer collects `.scroll-reveal` elements once at load, so anything rendered after that would never reveal.
 - Theme toggle writing `data-theme` on `<html>` and persisting to `localStorage` under `theme`.
+
+**`hero-3d.js`** is a classic script loaded after `three.min.js` on `index.html` only. It renders the hero wave field into `#hero-canvas`, reads `--primary`/`--secondary` and observes `data-theme` to update colors and opacity. It pauses when off-screen or in a hidden tab, renders one static frame under `prefers-reduced-motion`, and silently no-ops without WebGL or `THREE` so the blobs remain the fallback. Every tuning value (grid density, wave shape, opacity per theme, camera and parallax) lives in the frozen `HERO_CONFIG` at the top of the file; the scene is composed from single-purpose factories (`createWaveField`, `createParallaxCamera`, `createFrameLoop`, `readThemePalette`), so a visual tweak is a config edit and a new effect is a new factory wired in `initHeroScene`.
 
 **Theming is entirely CSS custom properties.** `:root` in `style.css` defines the dark palette and `[data-theme="light"]` overrides it; `index.html` ships with `data-theme="dark"` on `<html>`. New colors should come from the existing tokens (`--bg-color`, `--text-main`, `--text-muted`, `--primary`, `--secondary`, `--accent`, `--glass-bg`, `--glass-border`, `--nav-bg`, `--blob-opacity`) rather than literals, or light mode will break. The sun/moon icons are swapped by `[data-theme]` rules near the end of the stylesheet.
 
