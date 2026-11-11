@@ -547,17 +547,6 @@ p {
   padding-top: 8rem;
   padding-bottom: 4rem;
 }
-.cs-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--text-muted);
-  font-weight: 500;
-  margin-bottom: 2rem;
-}
-.cs-back:hover {
-  color: var(--primary);
-}
 .cs-hero {
   margin-bottom: 3rem;
 }
