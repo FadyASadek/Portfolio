@@ -1,4 +1,178 @@
 const projectsData = {
+  gdg_assiut: {
+    title: "GDG Assiut Platform",
+    tagline:
+      "Production event management, ticketing, and live engagement platform engineered for Google Developer Group summits and multi-track conferences.",
+    role: "Software Engineer",
+    date: "2026",
+    img: "image/gdg_assiut-cover.png",
+    gallery: [
+      "image/gdg_assiut-01.png",
+      "image/gdg_assiut-02.png",
+    ],
+    live: "https://gdg-assiut.org/home",
+    code: "#",
+    overview:
+      "GDG Assiut is an event management and digital ticketing platform designed for developer conferences, multi-day technical summits, and community chapter operations. The backend is built with .NET 10 following Clean Architecture principles across API, business logic, and data layers, incorporating HMAC-protected blind indexing for attendee national IDs, resilient database retry strategies, and automated background workers for outbox delivery and RFC-compliant Web Push. The frontend is built on Angular 22 with standalone components, signals, and a progressive web app service worker that enables offline ticket snapshot retrieval and QR badge verification when network connectivity is absent. Gate staff utilize an in-browser scanner featuring hybrid native and software QR decoding coupled with database-level concurrency control to process high-throughput attendee check-ins without race conditions or duplicate entries. Integrated ASP.NET Core SignalR hubs facilitate real-time session interaction, streaming moderated live Q&A feeds directly to attendees, speakers, and event organizers.",
+    problem:
+      "Organizing large developer conferences requires managing multi-day attendee registrations, strict gate access controls, and real-time session engagement under unreliable venue network conditions. Traditional event setups suffer from slow gate verification, duplicate check-ins across multiple entrances, and fragmented communication between organizers and attendees.",
+    architecture: [
+      "Clean Architecture Layering: The backend organizes domain logic, data persistence, business workflows, and web presentation across decoupled projects (GdgAssuit.DAL, GdgAssuit.BLL, GdgAssuit.API) with strict separation of concerns.",
+      "Standalone Signal-Driven PWA: The Angular 22 frontend leverages reactive signals, standalone components, lazy-loaded feature routes, and an Angular Service Worker (ngsw) to cache ticket snapshots and assets for reliable offline gate display.",
+      "Hardened Containerized Topology: Production deployment coordinates .NET 10 Web API, Angular static Nginx frontend, Microsoft SQL Server, and SeaweedFS S3 object storage across segregated proxy and internal data networks.",
+      "Edge Reverse Proxy & Automated TLS: Caddy serves as the public ingress providing automatic Let's Encrypt HTTPS certificates, zstd/gzip compression, and routing across static assets, REST APIs, and SignalR WebSocket endpoints.",
+    ],
+    stackByCategory: {
+      Backend: [
+        ".NET 10",
+        "ASP.NET Core",
+        "Entity Framework Core 10",
+        "ASP.NET Core SignalR",
+        "ASP.NET Core Data Protection",
+        "Serilog 10",
+        "SkiaSharp 4",
+      ],
+      Frontend: [
+        "Angular 22",
+        "Angular Service Worker (PWA)",
+        "Tailwind CSS 4",
+        "TypeScript 6",
+        "SignalR Client 10",
+        "jsQR",
+      ],
+      Database: [
+        "Microsoft SQL Server 2025",
+        "SeaweedFS S3 Storage",
+      ],
+      "DevOps / Infra": [
+        "Docker Compose",
+        "Caddy 2",
+        "Nginx",
+        "GitHub Actions",
+        "Watchtower",
+        "GitHub Container Registry",
+      ],
+      Integrations: [
+        "Amazon S3 API",
+        "MailKit (SMTP)",
+        "Web Push (VAPID / RFC 8291)",
+      ],
+      Testing: [
+        "xUnit 2",
+        "Microsoft.AspNetCore.Mvc.Testing 10",
+        "Testcontainers 4",
+        "Vitest 5",
+      ],
+    },
+    features: [
+      "Multi-Day Event Ticketing & Gate Check-In: Staff scan dynamic QR tokens or enter short codes to admit attendees day-by-day with instant duplicate detection and manual lookup fallbacks.",
+      "Batch Registration Review Pipeline: Organizers review and decide up to 200 attendee applications per batch with day-specific grant modes, automated notice generation, and comprehensive audit trails.",
+      "Real-Time Session Q&A: Attendees submit and upvote session questions while speakers and moderators manage live question queues through role-segregated SignalR channels.",
+      "Offline Ticket Access & Wallet: Progressive Web App capabilities allow attendees to cache event tickets and valid QR badges locally in browser storage with automated retention pruning.",
+      "Blind-Indexed National ID Protection: Attendee government IDs are encrypted at rest with ASP.NET Data Protection while preserving deterministic keyed HMAC blind indexes for duplicate checks and masked gate verification.",
+      "Multi-Channel Event Broadcasts: Notification subsystem dispatches queued announcements through SMTP email and VAPID-authenticated RFC 8291 Web Push notifications with automatic dead subscription cleanup.",
+    ],
+    challenges: [
+      {
+        title: "Idempotent High-Concurrency Gate Check-In",
+        detail:
+          "Under high attendee arrival pressure across multiple gate lanes, simultaneous scans of the same ticket could cause race conditions. In CheckInService.cs, concurrency is resolved at the database level through a unique constraint on (TicketId, EventDay); TrySaveChangesWithConflictsAsync catches constraint violations and transparently returns the winning check-in timestamp and staff record without requiring heavy distributed locking.",
+      },
+      {
+        title: "Zero-Knowledge Blind Indexing for Sensitive Attendee Identifiers",
+        detail:
+          "Egyptian national IDs required strict privacy compliance while still supporting duplicate detection and gate search without storing plaintext numbers. In NationalIdProtector.cs, values are encrypted at rest using IDataProtectionProvider, masked to four trailing digits for staff verification, and indexed via HMAC-SHA256 with a dedicated secret key, enabling fast deterministic database lookups without plaintext exposure.",
+      },
+      {
+        title: "High-Throughput RFC-Compliant Web Push Delivery & Pruning",
+        detail:
+          "Delivering broadcasts to hundreds of browser endpoints required payload encryption and handling dead subscriptions without blocking background queues. In WebPushDelivery.cs, the service parallelizes delivery with Parallel.ForEachAsync (up to 16 concurrent requests), encrypts payloads per subscriber using AES-128-GCM and VAPID authentication, and prunes expired HTTP 410 Gone endpoints from the database in batches.",
+      },
+      {
+        title: "Hybrid Hardware/Software QR Decoding on Resource-Constrained Devices",
+        detail:
+          "Staff gate devices ranged from modern smartphones to low-spec tablets where continuous video stream QR decoding strained CPU and battery. In qr-frame-decoder.ts, the system dynamically probes for native browser BarcodeDetector API for GPU-accelerated frame analysis, falling back to an in-memory canvas running jsqr with aspect-ratio downscaling capped at 640px to sustain high frame rates.",
+      },
+    ],
+  },
+  neurix: {
+    title: "Neurix Company Profile, CMS & CRM Platform",
+    tagline:
+      "An enterprise-grade digital ecosystem uniting an interactive public web profile, dual-language CMS, lead management CRM, and real-time multimodal AI assistant.",
+    role: "Software Engineer",
+    date: "2026",
+    img: "image/neurix-cover.png",
+    gallery: [],
+    live: "https://company.neurix.uk/",
+    code: "#",
+    overview:
+      "Neurix is an enterprise web ecosystem engineered for an AI and digital engineering holding entity, unifying a public brand portal with a private administration dashboard. The platform combines a dynamic public company profile with a custom multilingual content management system (CMS) and an operational customer relationship management (CRM) backend. Built on ASP.NET Core 10 and Entity Framework Core 10, the solution enforces strict physical isolation between CMS content and CRM lead data while allowing unified or split database deployments. Visitors can explore company divisions, read insights, submit inquiries, and converse directly with a real-time multimodal AI assistant powered by Google Gemini Live WebSockets. Administrative staff benefit from role-based workflows for managing brand content, publishing division pages, processing inbound leads, and converting prospects into active deals.",
+    problem:
+      "Neurix required a centralized, high-performance web platform to present its multi-division AI holding company while managing inbound inquiries and dynamic content across Arabic and English without vendor lock-in. Existing off-the-shelf solutions could not provide the combined flexibility of customized bilingual content governance, integrated CRM lead conversion, and low-latency multimodal voice and text AI interactions.",
+    architecture: [
+      "Clean Three-Tier Decoupling: Presentation layer (Neurix Web MVC) delegates domain orchestration to business logic (Neurix.BLL) while data persistence is encapsulated within separate repositories and DbContexts (Neurix.DAL).",
+      "Dual-Context Database Isolation: The architecture separates content management from relationship data via distinct CmsDbContext and CrmDbContext instances, using custom migration history tables to allow unified or split SQL Server hosting.",
+      "Fail-Soft Resilience Pipeline: Database initializers and public portal controllers catch database unavailability gracefully, ensuring the public company profile remains operational even if the CRM or CMS databases experience downtime.",
+      "Bidirectional Real-Time AI Gateway: An integrated controller bridges browser WebSockets directly to Google's Gemini Multimodal Live WebSocket API for streaming duplex voice audio alongside a standard REST endpoint for text chat.",
+    ],
+    stackByCategory: {
+      Backend: [
+        ".NET 10",
+        "ASP.NET Core 10 MVC",
+        "Entity Framework Core 10",
+        "ASP.NET Core Identity 10",
+      ],
+      Frontend: [
+        "Razor Views",
+        "Tailwind CSS 3",
+      ],
+      Database: [
+        "Microsoft SQL Server",
+      ],
+      "DevOps / Infra": [
+        "Docker",
+      ],
+      Integrations: [
+        "Google Gemini Live WebSocket API",
+        "Google Gemini REST API",
+      ],
+      Testing: [
+        "xUnit 2.9",
+        "EF Core In-Memory 10",
+        "Coverlet 6.0",
+      ],
+    },
+    features: [
+      "Dynamic Multilingual CMS: Administrators manage brand profiles, services, projects, blog insights, and custom page bands in English and Arabic with automated UI culture resolution and JSON-backed translation caching.",
+      "Inbound Lead Capture and Conversion: Public website inquiries automatically ingest into the CRM pipeline with double-submit protection, duplicate detection, and one-click atomic conversion into companies and contacts.",
+      "Multimodal Voice and Text AI Assistant: An embedded virtual assistant interacts with visitors via low-latency streaming audio over WebSockets or conversational text powered by the Gemini Live API.",
+      "Dynamic CSS Brand Theming: Custom layout helpers parse hex brand colors from database profiles into HSL triplet tokens, enabling runtime Tailwind CSS color variable overriding without rebuilding assets.",
+      "Secure Media Asset Management: Upload pipeline enforces file extension allowlists, size boundaries, and path traversal sanitization while serving media dynamically via physical file providers.",
+      "Role-Based CRM Administration: ASP.NET Core Identity safeguards back-office controllers with cookie authentication, sliding session timeouts, lockout protection, and granular admin/staff permissions.",
+    ],
+    challenges: [
+      {
+        title: "Zero-Downtime Migration Sharing Across Dual Contexts",
+        detail:
+          "When deploying both CmsDbContext and CrmDbContext against a shared SQL Server instance, Entity Framework Core default migration tables collide. In CmsServiceCollectionExtensions, a dedicated migrations history table ('__EFMigrationsHistory_CMS') was configured alongside fail-soft startup initializers in CmsDatabaseInitializer and CrmDatabaseInitializer that trap connectivity faults, preventing database migration failures from terminating the web host process.",
+      },
+      {
+        title: "Dynamic Build-Time Asset Manifest vs Runtime Media Serving",
+        detail:
+          "ASP.NET Core's MapStaticAssets middleware optimizes static delivery via build-time manifests, which causes dynamic media uploaded through CmsMediaUploadHelper after deployment to return 404 HTTP errors. In Program.cs, a dedicated UseStaticFiles middleware was registered using a PhysicalFileProvider mapped to the uploads directory ahead of routing, ensuring uploaded images are immediately resolvable on disk while preserving static asset bundling.",
+      },
+      {
+        title: "Full-Duplex Bidirectional Audio Streaming Proxy",
+        detail:
+          "Integrating real-time conversational voice without exposing secret credentials required establishing a low-latency proxy between the browser and Google's Gemini Multimodal Live API. In AIChatController, a persistent WebSocket handler was implemented using ClientWebSocket to pipe raw audio streams bi-directionally between the client and generative AI endpoint, managing handshake setup payloads and graceful socket teardown.",
+      },
+      {
+        title: "Atomic Inbound Lead Conversion with Duplicate Mitigation",
+        detail:
+          "Converting unverified public contact submissions into relational CRM entities risked orphaned records and concurrency collisions. LeadConversionService implements a transactional workflow with preview staging that sanitizes inputs, matches existing company names using collation-aware lookups without invalidating SQL indexes, enforces strict status checks against double submissions, and links new Company and Contact records in an atomic transaction.",
+      },
+    ],
+  },
   yt_playlist_downloader: {
     title: "YouTube Playlist Downloader",
     tagline:
